@@ -18,21 +18,41 @@ const posts = [
   { author: "mariasilva", content: "Acordando com uma ideia incrível para um novo projeto de design. #criatividade", minutesAgo: 2 },
   { author: "carloscosta", content: "Alguém mais com problemas no deploy hoje? #devlife", minutesAgo: 15 },
   { author: "anacosta", content: "Dica do dia: contraste de cor não é enfeite, é acessibilidade. Testem seus botões. #a11y", minutesAgo: 47 },
+  { author: "joaosouza", content: "Comecei o trabalho de POS hoje: um clone simplificado do X, mobile first. #diatinfx", minutesAgo: 60 },
   { author: "pedrolima", content: "Terminei o protótipo mobile first do trabalho de POS. Faltam os comentários encadeados.", minutesAgo: 96 },
   { author: "fernandadias", content: "Índice certo no Postgres transformou uma consulta de 2s em 30ms. Modelagem importa. #banco", minutesAgo: 180 },
+  { author: "mariasilva", content: "Enquete: qual paleta combina mais com a identidade da DIATINF? #design", minutesAgo: 240 },
   { author: "luispereira", content: "Descobri hoje que TypeScript não é só JavaScript com tipos. É JavaScript com paz de espírito.", minutesAgo: 320 },
 ];
 
 const comments = [
-  { post: 0, author: "pedrolima", content: "Sensacional, Maria! Quero ver." },
-  { post: 0, author: "anacosta", content: "Compartilha o moodboard depois?" },
-  { post: 0, author: "carloscosta", content: "A gente precisa de mais gente com essa energia às 6h da manhã." },
-  { post: 0, author: "mariasilva", content: "Assim que sair do rascunho eu posto aqui!", replyTo: 0 },
-  { post: 1, author: "ricardosantos", content: "Aqui o build passou, mas a variável de ambiente estava faltando." },
-  { post: 1, author: "carloscosta", content: "Era isso mesmo. Obrigado!", replyTo: 4 },
-  { post: 2, author: "carlanunes", content: "Isso deveria estar em todo checklist de entrega." },
-  { post: 3, author: "mariasilva", content: "Ficou muito bom o header em navy com o dourado." },
-  { post: 4, author: "luispereira", content: "Qual índice você usou?" },
+  { post: 0, author: "pedrolima", content: "Sensacional, Maria! Quero ver.", minutesAgo: 1 },
+  { post: 0, author: "anacosta", content: "Compartilha o moodboard depois?", minutesAgo: 1 },
+  { post: 0, author: "carloscosta", content: "A gente precisa de mais gente com essa energia às 6h da manhã.", minutesAgo: 1 },
+  { post: 0, author: "mariasilva", content: "Assim que sair do rascunho eu posto aqui!", replyTo: 0, minutesAgo: 0 },
+
+  { post: 1, author: "ricardosantos", content: "Aqui o build passou, mas faltava uma variável de ambiente.", minutesAgo: 10 },
+  { post: 1, author: "carloscosta", content: "Era isso mesmo. Obrigado!", replyTo: 4, minutesAgo: 8 },
+
+  { post: 2, author: "carlanunes", content: "Isso deveria estar em todo checklist de entrega.", minutesAgo: 40 },
+  { post: 2, author: "joaosouza", content: "Salvei esse post. Vou revisar os contrastes do meu protótipo.", minutesAgo: 30 },
+
+  { post: 3, author: "pedrolima", content: "Boa, João! Já testei aqui e ficou rápido.", minutesAgo: 50 },
+  { post: 3, author: "mariasilva", content: "O feed ficou ótimo com o fundo cream.", minutesAgo: 45 },
+  { post: 3, author: "pedrolima", content: "Concordo com a Maria, ficou leve.", replyTo: 9, minutesAgo: 40 },
+  { post: 3, author: "carloscosta", content: "Já subiu na Vercel?", minutesAgo: 35 },
+
+  { post: 4, author: "mariasilva", content: "Ficou muito bom o header em navy com o dourado.", minutesAgo: 80 },
+  { post: 4, author: "joaosouza", content: "Manda o link do repositório depois?", minutesAgo: 70 },
+
+  { post: 5, author: "luispereira", content: "Qual índice você usou?", minutesAgo: 150 },
+
+  { post: 6, author: "joaosouza", content: "Voto na navy com o dourado.", minutesAgo: 230 },
+  { post: 6, author: "mariasilva", content: "Foi a mais votada até agora!", replyTo: 15, minutesAgo: 225 },
+  { post: 6, author: "joaosouza", content: "Combina demais com a identidade da DIATINF.", replyTo: 16, minutesAgo: 220 },
+  { post: 6, author: "pedrolima", content: "Eu curti o cream de fundo.", minutesAgo: 210 },
+  { post: 6, author: "joaosouza", content: "Fechou, vou aplicar no protótipo hoje.", minutesAgo: 190 },
+  { post: 6, author: "joaosouza", content: "Atualizei os tokens de cor no repositório.", replyTo: 19, minutesAgo: 185 },
 ];
 
 const ratings = [
@@ -40,10 +60,13 @@ const ratings = [
   { post: 0, user: "anacosta", value: 2 },
   { post: 2, user: "joaosouza", value: 3 },
   { post: 2, user: "mariasilva", value: 3 },
-  { post: 3, user: "carloscosta", value: 2 },
-  { post: 4, user: "joaosouza", value: 3 },
-  { post: 4, user: "ricardosantos", value: 3 },
-  { post: 5, user: "pedrolima", value: 1 },
+  { post: 3, user: "pedrolima", value: 3 },
+  { post: 3, user: "mariasilva", value: 2 },
+  { post: 4, user: "carloscosta", value: 2 },
+  { post: 5, user: "joaosouza", value: 3 },
+  { post: 5, user: "ricardosantos", value: 3 },
+  { post: 6, user: "joaosouza", value: 2 },
+  { post: 7, user: "pedrolima", value: 1 },
 ];
 
 function minutesAgo(minutes: number) {
@@ -77,14 +100,14 @@ async function main() {
   }
 
   const commentIds: string[] = [];
-  for (const [index, comment] of comments.entries()) {
+  for (const comment of comments) {
     const created = await prisma.comment.create({
       data: {
         content: comment.content,
         postId: postIds[comment.post],
         authorId: users.get(comment.author)!,
         parentId: comment.replyTo === undefined ? null : commentIds[comment.replyTo],
-        createdAt: minutesAgo(posts[comment.post].minutesAgo - 1 - index),
+        createdAt: minutesAgo(comment.minutesAgo),
       },
     });
     commentIds.push(created.id);
