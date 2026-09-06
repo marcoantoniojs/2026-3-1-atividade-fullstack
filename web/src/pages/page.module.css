@@ -1,0 +1,30 @@
+.title {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-2xl);
+  color: var(--navy-900);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.subtitle {
+  margin-bottom: var(--space-4);
+  color: var(--text-muted);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.back:hover {
+  color: var(--navy-900);
+}

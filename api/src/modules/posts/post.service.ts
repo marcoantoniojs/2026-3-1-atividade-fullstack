@@ -5,12 +5,20 @@ import { publicUserSelect, type PublicUser } from "../../lib/serializers.js";
 import { cursorArgs, splitPage } from "../../lib/pagination.js";
 import type { CreatePostInput, ListPostsInput } from "./post.schemas.js";
 
+export type CommentPreview = {
+  id: string;
+  content: string;
+  createdAt: Date;
+  author: PublicUser;
+};
+
 export type PostPayload = {
   id: string;
   content: string;
   createdAt: Date;
   author: PublicUser;
   commentCount: number;
+  firstComment: CommentPreview | null;
   rating: { average: number; count: number; myValue: number | null };
 };
 
@@ -30,8 +38,19 @@ async function decorate(posts: RawPost[], viewerId?: string): Promise<PostPayloa
 
   const postId = { in: posts.map((post) => post.id) };
 
-  const [comments, ratings, mine] = await Promise.all([
+  const [comments, previews, ratings, mine] = await Promise.all([
     prisma.comment.groupBy({ by: ["postId"], where: { postId }, _count: { _all: true } }),
+    prisma.comment.findMany({
+      where: { postId, parentId: null },
+      select: {
+        id: true,
+        content: true,
+        createdAt: true,
+        postId: true,
+        author: { select: publicUserSelect },
+      },
+      orderBy: { createdAt: "asc" },
+    }),
     prisma.rating.groupBy({ by: ["postId"], where: { postId }, _avg: { value: true }, _count: { _all: true } }),
     viewerId
       ? prisma.rating.findMany({ where: { postId, userId: viewerId }, select: { postId: true, value: true } })
@@ -39,6 +58,14 @@ async function decorate(posts: RawPost[], viewerId?: string): Promise<PostPayloa
   ]);
 
   const commentCount = new Map(comments.map((row) => [row.postId, row._count._all]));
+
+  const firstComment = new Map<string, CommentPreview>();
+  for (const { postId: id, ...preview } of previews) {
+    if (!firstComment.has(id)) {
+      firstComment.set(id, preview);
+    }
+  }
+
   const ratingSummary = new Map(ratings.map((row) => [row.postId, row]));
   const myRating = new Map(mine.map((row) => [row.postId, row.value]));
 
@@ -47,6 +74,7 @@ async function decorate(posts: RawPost[], viewerId?: string): Promise<PostPayloa
     return {
       ...post,
       commentCount: commentCount.get(post.id) ?? 0,
+      firstComment: firstComment.get(post.id) ?? null,
       rating: {
         average: summary?._avg.value ? Number(summary._avg.value.toFixed(2)) : 0,
         count: summary?._count._all ?? 0,

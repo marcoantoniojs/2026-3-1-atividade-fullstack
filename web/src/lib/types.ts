@@ -17,12 +17,20 @@ export type Rating = {
   myValue: number | null;
 };
 
+export type CommentPreview = {
+  id: string;
+  content: string;
+  createdAt: string;
+  author: User;
+};
+
 export type Post = {
   id: string;
   content: string;
   createdAt: string;
   author: User;
   commentCount: number;
+  firstComment: CommentPreview | null;
   rating: Rating;
 };
 

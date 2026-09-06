@@ -3,6 +3,7 @@ import { AppLayout } from "./components/AppLayout";
 import { RequireAuth } from "./components/RequireAuth";
 import { Login } from "./pages/Login";
 import { SuapCallback } from "./pages/SuapCallback";
+import { Feed } from "./pages/Feed";
 import { Placeholder } from "./pages/Placeholder";
 
 function Shell() {
@@ -20,7 +21,7 @@ export function App() {
       <Route path="/suap/callback" element={<SuapCallback />} />
 
       <Route element={<Shell />}>
-        <Route path="/" element={<Placeholder title="Feed Global" />} />
+        <Route path="/" element={<Feed />} />
         <Route path="/buscar" element={<Placeholder title="Pesquisar" />} />
         <Route path="/post/:id" element={<Placeholder title="Publicação" />} />
         <Route path="/perfil/:username" element={<Placeholder title="Perfil" />} />

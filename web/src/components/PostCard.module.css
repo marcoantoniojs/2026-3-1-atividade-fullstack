@@ -1,0 +1,120 @@
+.card {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.card + .card {
+  margin-top: var(--space-4);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--space-2);
+  min-width: 0;
+}
+
+.name {
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.handle {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+}
+
+.time {
+  flex: none;
+  margin-left: auto;
+  font-size: var(--text-base);
+  color: var(--text-muted);
+}
+
+.content {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-md);
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--navy-900);
+  color: var(--surface);
+  font-size: var(--text-base);
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.comment:hover {
+  background: var(--navy-700);
+}
+
+.remove {
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+.remove:hover {
+  background: var(--cream-100);
+  color: var(--orange-600);
+}
+
+.preview {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--cream-100);
+}
+
+.previewBody {
+  min-width: 0;
+}
+
+.previewAuthor {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.previewHandle {
+  margin-left: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.previewText {
+  font-size: var(--text-base);
+  overflow-wrap: anywhere;
+}
