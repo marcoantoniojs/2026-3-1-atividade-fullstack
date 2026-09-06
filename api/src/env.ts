@@ -7,6 +7,8 @@ const schema = z.object({
   WEB_ORIGIN: z.string().default("http://localhost:5173"),
   JWT_SECRET: z.string().min(16),
   JWT_EXPIRES_IN: z.string().default("7d"),
+  SUAP_BASE_URL: z.string().default("https://suap.ifrn.edu.br"),
+  SUAP_SCOPE: z.string().default("identificacao email documentos_pessoais"),
   SUAP_CLIENT_ID: z.string().default(""),
   SUAP_CLIENT_SECRET: z.string().default(""),
   SUAP_REDIRECT_URI: z.string().default("http://localhost:5173/suap/callback"),

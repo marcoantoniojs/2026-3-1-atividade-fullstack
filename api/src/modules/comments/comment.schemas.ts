@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const createCommentSchema = z.object({
   content: z
-    .string()
+    .string({ error: "Escreva o comentário." })
     .trim()
     .min(1, "Escreva o comentário.")
     .max(280, "O comentário pode ter no máximo 280 caracteres."),

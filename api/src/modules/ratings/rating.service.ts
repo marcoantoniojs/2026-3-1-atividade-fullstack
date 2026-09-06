@@ -4,7 +4,7 @@ import { notFound } from "../../lib/errors.js";
 
 export const rateSchema = z.object({
   value: z.coerce
-    .number()
+    .number({ error: "A avaliação vai de 1 a 3 estrelas." })
     .int()
     .min(1, "A avaliação vai de 1 a 3 estrelas.")
     .max(3, "A avaliação vai de 1 a 3 estrelas."),

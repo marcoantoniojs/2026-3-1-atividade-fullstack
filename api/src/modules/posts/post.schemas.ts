@@ -3,7 +3,7 @@ import { paginationSchema } from "../../lib/pagination.js";
 
 export const createPostSchema = z.object({
   content: z
-    .string()
+    .string({ error: "Escreva algo antes de publicar." })
     .trim()
     .min(1, "Escreva algo antes de publicar.")
     .max(280, "A publicação pode ter no máximo 280 caracteres."),
