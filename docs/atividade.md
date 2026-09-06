@@ -13,8 +13,8 @@
 - [x] Atualize os textos de README.md com seu nome e links do github e linkedin;
 - [x] Decida e atualize em README.md o texto sobre os componentes/tecnologias;
 - [x] Construa / Defina o protótipo de intergafe gráfica web para o aplicativo;
-- [ ] Construa o frontend web e a backend api restfull;
-- [ ] Atualize os textos de README.md com as suas interações com a IA;
+- [x] Construa o frontend web e a backend api restfull;
+- [x] Atualize os textos de README.md com as suas interações com a IA;
 - [ ] Crie um víveo do uso do aplicativo e publique no prróprio github;
 - [ ] Ataulize o texto e o link do víveo em README.md sobre a execução do aplicativo.
 
