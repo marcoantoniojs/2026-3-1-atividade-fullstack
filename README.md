@@ -62,3 +62,4 @@ npm run dev               # http://localhost:5173
 ```
 
 **Vídeo do projeto em execução**:
+https://github.com/marcoantoniojs/2026-3-1-atividade-fullstack/blob/main/diatinfX.mp4
