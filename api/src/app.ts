@@ -11,7 +11,7 @@ import { errorHandler, notFoundHandler } from "./middlewares/error-handler.js";
 export function createApp() {
   const app = express();
 
-  app.use(cors({ origin: env.WEB_ORIGIN }));
+  app.use(cors({ origin: env.WEB_ORIGIN, credentials: true }));
   app.use(express.json());
 
   app.get("/health", (_req, res) => {
