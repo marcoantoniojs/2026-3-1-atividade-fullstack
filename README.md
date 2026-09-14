@@ -61,11 +61,4 @@ cp .env.example .env      # VITE_API_URL=http://localhost:3333
 npm run dev               # http://localhost:5173
 ```
 
-Com o seed aplicado, entre com qualquer um dos usuários de demonstração
-(`joaosouza`, `mariasilva`, `pedrolima`, ...) usando a senha `diatinf123`.
-
-O login pelo SUAP exige `SUAP_CLIENT_ID` e `SUAP_CLIENT_SECRET` no `api/.env`;
-sem eles, apenas essas rotas ficam indisponíveis e o restante do aplicativo
-funciona normalmente. Veja [docs/suap.md](docs/suap.md).
-
 **Vídeo do projeto em execução**:
